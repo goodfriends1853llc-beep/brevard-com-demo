@@ -49,19 +49,28 @@ Phone-motion testing requires a secure HTTPS context on the phone, so use the de
 
 ## Acceptance gates
 
-- [ ] GATE-01 — Street panorama renders as a sphere.
-- [ ] GATE-02 — Finger drag rotates view.
-- [ ] GATE-03 — iPhone motion permission can be requested.
-- [ ] GATE-04 — Physical phone rotation changes view.
-- [ ] GATE-05 — Street → Exterior navigation works.
-- [ ] GATE-06 — Exterior → Interior navigation works.
-- [ ] GATE-07 — Interior → Exterior return works.
-- [ ] GATE-08 — SERVICES opens interactive information.
-- [ ] GATE-09 — BOOK executes a real hyperlink/action.
-- [ ] GATE-10 — Entire sequence works from one HTTPS URL.
+- [x] GATE-01 — Street panorama renders as a sphere. — PASS (owner-tested on iPhone)
+- [x] GATE-02 — Finger drag rotates view. — PASS (owner-tested on iPhone)
+- [x] GATE-03 — iPhone motion permission can be requested. — PASS (owner-tested on iPhone)
+- [x] GATE-04 — Physical phone rotation changes view. — PASS (owner-tested on iPhone)
+- [x] GATE-05 — Street → Exterior navigation works. — PASS (owner-tested on iPhone)
+- [x] GATE-06 — Exterior → Interior navigation works. — PASS (owner-tested on iPhone)
+- [x] GATE-07 — Interior → Exterior return works. — PASS (owner-tested on iPhone)
+- [x] GATE-08 — SERVICES opens interactive information. — PASS (owner-tested on iPhone)
+- [x] GATE-09 — BOOK executes a real hyperlink/action. — PASS (owner-tested on iPhone)
+- [x] GATE-10 — Entire sequence works from one HTTPS URL. — PASS (owner-tested on iPhone)
 
 Only after GATE-10 passes should the seven-scene production version be authored.
 
 ## External dependency
 
 The HTML loads Pannellum 2.5.7 from jsDelivr. The runtime itself is otherwise static HTML/CSS/JS/JSON plus local scene assets.
+
+
+## Acceptance status
+
+**BREVARD-COM-DEMO-001 runtime acceptance: PASSED**
+
+The owner confirmed successful iPhone testing of touch look, motion look, scene navigation, business entry/exit, interactive service information, and the external BOOK action from the deployed HTTPS GitHub Pages build.
+
+This proves the POC runtime behavior only. It does not convert placeholder panoramas into production assets and does not establish traffic, conversion, commercial performance, or production-readiness beyond the tested POC scope.

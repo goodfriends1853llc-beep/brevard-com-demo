@@ -25,7 +25,7 @@ The Street and Interior panoramas are intentionally marked as placeholders. They
 
 ## Deployed POC scene assets
 
-For the GitHub Pages runtime proof, the three scene images are web-optimized 1024×512 JPEG copies. They preserve exact 2:1 equirectangular geometry for runtime testing, but they are not production-quality masters and do not add source detail.
+For the GitHub Pages runtime proof, the three scene images are web-optimized 256×128 JPEG copies. They preserve exact 2:1 equirectangular geometry for runtime testing, but they are not production-quality masters and do not add source detail.
 
 ## Local test
 

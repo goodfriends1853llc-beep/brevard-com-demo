@@ -1,0 +1,148 @@
+{
+  "schema": "brevard-spatial-world/0.1",
+  "world_id": "BREVARD-COM-DEMO-001",
+  "title": "Explore Brevard — Lagoon Cuts Commercial POC",
+  "status": "POC_RUNTIME_BUILD",
+  "foundational_rules": [
+    "BUSINESS_ENTITY != BUSINESS_IMAGE",
+    "WORLD_LOCATION != PANORAMA_FILE",
+    "HOTSPOT != PAINTED_GRAPHIC",
+    "MOVE_EVENT != CAMERA_ROTATION",
+    "COMMERCIAL_ACTION != VISUAL_REPRESENTATION_OF_ACTION"
+  ],
+  "entities": {
+    "business:lagoon-cuts": {
+      "entity_type": "business",
+      "name": "Lagoon Cuts",
+      "district": "Melbourne District",
+      "real_world_status": "FICTIONAL_SAMPLE_BUSINESS",
+      "purpose": "Demonstrate interactive business placement inside the Brevard spatial commercial world."
+    }
+  },
+  "scenes": {
+    "street-001": {
+      "scene_id": "street-001",
+      "label": "SCENE-001 — Street",
+      "scene_type": "street",
+      "representation": {
+        "asset": "scenes/street.jpg",
+        "projection": "equirectangular",
+        "coverage": "360x180",
+        "aspect_ratio": "2:1",
+        "status": "POC_PLACEHOLDER"
+      },
+      "view": { "pitch": 0, "yaw": 5, "hfov": 92, "north_offset": 0 },
+      "relationships": [
+        { "relationship_type": "CONNECTS_TO", "target": "lagoon-exterior" }
+      ],
+      "interactions": [
+        {
+          "interaction_id": "move-street-to-exterior",
+          "interaction_type": "MOVE",
+          "label": "Approach Lagoon Cuts",
+          "pitch": -8,
+          "yaw": 24,
+          "target_scene": "lagoon-exterior"
+        }
+      ]
+    },
+    "lagoon-exterior": {
+      "scene_id": "lagoon-exterior",
+      "label": "SCENE-002 — Lagoon Cuts Exterior",
+      "scene_type": "business_exterior",
+      "entity_ref": "business:lagoon-cuts",
+      "representation": {
+        "asset": "scenes/lagoon-exterior.jpg",
+        "projection": "equirectangular",
+        "coverage": "360x180",
+        "aspect_ratio": "2:1",
+        "status": "EXISTING_SAMPLE_REFERENCE"
+      },
+      "view": { "pitch": -2, "yaw": 82, "hfov": 90, "north_offset": 0 },
+      "relationships": [
+        { "relationship_type": "CONNECTS_TO", "target": "street-001" },
+        { "relationship_type": "CONNECTS_TO", "target": "lagoon-interior" }
+      ],
+      "interactions": [
+        {
+          "interaction_id": "move-exterior-to-street",
+          "interaction_type": "MOVE",
+          "label": "Return to Street",
+          "pitch": -12,
+          "yaw": -96,
+          "target_scene": "street-001"
+        },
+        {
+          "interaction_id": "move-enter-shop",
+          "interaction_type": "MOVE",
+          "label": "Enter Lagoon Cuts",
+          "pitch": -7,
+          "yaw": 68,
+          "target_scene": "lagoon-interior"
+        },
+        {
+          "interaction_id": "about-lagoon-cuts",
+          "interaction_type": "ABOUT",
+          "label": "About Lagoon Cuts",
+          "pitch": 12,
+          "yaw": 69,
+          "content": {
+            "title": "Lagoon Cuts",
+            "body": "A fictional Brevard sample business used to prove how a real local business could become an interactive destination inside the spatial world."
+          }
+        }
+      ]
+    },
+    "lagoon-interior": {
+      "scene_id": "lagoon-interior",
+      "label": "SCENE-003 — Lagoon Cuts Interior",
+      "scene_type": "business_interior",
+      "entity_ref": "business:lagoon-cuts",
+      "representation": {
+        "asset": "scenes/lagoon-interior.jpg",
+        "projection": "equirectangular",
+        "coverage": "360x180",
+        "aspect_ratio": "2:1",
+        "status": "POC_PLACEHOLDER"
+      },
+      "view": { "pitch": 0, "yaw": 0, "hfov": 88, "north_offset": 0 },
+      "relationships": [
+        { "relationship_type": "CONNECTS_TO", "target": "lagoon-exterior" }
+      ],
+      "interactions": [
+        {
+          "interaction_id": "move-exit-shop",
+          "interaction_type": "MOVE",
+          "label": "Exit to Brevard",
+          "pitch": -10,
+          "yaw": -150,
+          "target_scene": "lagoon-exterior"
+        },
+        {
+          "interaction_id": "services-lagoon-cuts",
+          "interaction_type": "SERVICES",
+          "label": "View Services",
+          "pitch": 5,
+          "yaw": 28,
+          "content": {
+            "title": "Lagoon Cuts Services",
+            "items": ["Haircuts", "Fades", "Beard Trims", "Shaves"],
+            "book_interaction_ref": "book-lagoon-cuts"
+          }
+        },
+        {
+          "interaction_id": "book-lagoon-cuts",
+          "interaction_type": "BOOK",
+          "label": "Book Appointment",
+          "pitch": -2,
+          "yaw": 62,
+          "action": {
+            "action_type": "OPEN_URL",
+            "url": "https://example.com/?source=BREVARD-COM-DEMO-001&action=book",
+            "demo": true
+          }
+        }
+      ]
+    }
+  }
+}
